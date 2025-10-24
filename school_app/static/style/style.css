@@ -12,6 +12,7 @@
             padding-top: 60px; 
             min-height: 100vh;            
         }
+        
 
         .header {
             position: fixed; 
@@ -64,11 +65,11 @@
 
         h1 {
             font-family: Anton;
-            color: #333;
+            color: #481F6B;
         }
 
         p {
-            color: #555;
+            color: #000000;
         }
 
 
