@@ -18,7 +18,8 @@
                 position: fixed;
                 top: 0;
                 left: 0;
-                width: calc(100% - 40px);
+                width: 100% ;
+                box-sizing: border-box;
                 height: 95px;
                 background-color: rgba(255, 255, 255, 0.5);
                 color: #ffffff;
@@ -64,8 +65,9 @@
         }
 
         h1 {
-            margin-left: 110px;
-            padding: 100PX;
+            margin-bottom: 10px;
+            margin-left: 180px;
+            padding-top: 100PX;
             font-family: Anton;
             color: #481F6B;
             font-size: 170px;
@@ -73,7 +75,9 @@
         }
 
         p {
-            color: #000000;
+            font-size: 20px;
+            margin-left: 120px;
+            color: #ffffff;
         }
 
 
