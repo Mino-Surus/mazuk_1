@@ -1,34 +1,102 @@
 @import "null.css";
  
-        body {
+        .content {
             background-image: url('header.png');
             background-size: cover;        
             background-position: center;   
-            background-attachment: fixed;  
             background-repeat: no-repeat;
-            margin: 0; 
             font-family: sans-serif;
+            box-sizing: border-box;
             line-height: 1.6;
             padding-top: 60px; 
             min-height: 100vh;            
         }
         
+        .forwho {
+            display: grid;
+            align-content: center;
+            grid-template-rows: auto 1fr auto;
+            min-height: 100vh;
+            margin: 0;
+            background-color: #481F6B;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 50px;
+        }
+        
+        .main-title {
+            align-content: center;
+            padding-left: 0%;
+            font-size: 2.5rem;
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+        
+        .word-1 { color: #ffffff; }
+        .word-2 { color: #FF5794; }
+        
+        .subtitle {
+            font-size: 1.2rem;
+            color: #666;
+        }
+        .cards-container {
+            display: flex;
+            gap: 20px;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+        
+        .card {
+            background: white;
+            border-radius: 10px;
+            padding: 30px;
+            flex: 1;
+            align-content: center;
+            min-width: 300px;
+            max-width: 350px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        
+        .card-title {
+            align-content: center;
+            padding: 0%;
+            font-size: 1.5rem;
+            margin-bottom: 15px;
+            color: #481F6B;
+        }
+        
+        .card-text {
+            font-family: sans-serif;
+            align-content: center;
+            padding: 0%;
+            color: #481F6B;
+            line-height: 1.5;
+        }
+        
 
         .header {
-                position: fixed;
-                top: 0;
-                left: 0;
-                width: 100% ;
-                box-sizing: border-box;
-                height: 95px;
-                background-color: rgba(255, 255, 255, 0.5);
-                color: #ffffff;
-                display: flex;
-                align-items: center;
-                justify-content: space-between;
-                padding: 0 20px;
-                box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-                z-index: 1000;
+            font-family: sans-serif;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100% ;
+            box-sizing: border-box;
+            height: 95px;
+            background-color: rgba(255, 255, 255, 0.5);
+            color: #ffffff;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0 20px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            z-index: 1000;
         }
 
         .header .logo {
@@ -44,11 +112,8 @@
             display: flex;
         }
 
-        .header .nav ul li {
-            margin-left: 20px;
-        }
-
         .header .nav ul li a {
+            margin-left: 20px;
             text-decoration: none;
             color: #ffffff;
             font-weight: 500;
@@ -59,25 +124,124 @@
             color: #ff00aa; 
         }
 
-        .content {
-            padding: 20px;
-            margin-top: 20px; 
-        }
 
         h1 {
-            margin-bottom: 10px;
-            margin-left: 180px;
-            padding-top: 100PX;
+            padding-bottom: 2vw;
+            padding-left: 13vw;
+            padding-top: 5vw;
+            padding-bottom: 0%;
             font-family: Anton;
             color: #481F6B;
-            font-size: 170px;
-            line-height: 180px;
+            font-size: 7rem;
+            line-height: 120px;
+        }
+
+        h2 {
+            padding-bottom: 2vw;
+            padding-left: 13vw;
+            padding-top: 5vw;
+            padding-bottom: 0%;
+            font-family: Anton;
+            color: #ffffff;
+            font-size: 3rem;
+            line-height: 120px;
+        }
+
+        h3 {
+            padding-bottom: 2vw;
+            padding-left: 13vw;
+            padding-top: 5vw;
+            padding-bottom: 0%;
+            font-family: Anton;
+            color: #FF5794;
+            font-size: 3rem;
+            line-height: 120px;
         }
 
         p {
             font-size: 20px;
-            margin-left: 120px;
+            padding-left: 10vw;
             color: #ffffff;
+        }
+
+        .courses-section {
+        background-repeat: no-repeat;
+        box-sizing: border-box;
+        background: url('courses.png');
+        padding: 40px 20px;
+        margin: 0;
+        width: 100%;
+        }
+    
+        .section-title {
+            padding: 0%;
+            text-align: center;
+            color: white;
+            font-size: 2rem;
+            margin-bottom: 30px;
+        }
+        
+        .courses-scroll-container {
+            width: 100%;
+            overflow-x: auto;
+            -webkit-overflow-scrolling: touch;
+        }
+        
+        .courses-scroll-container::-webkit-scrollbar {
+            height: 8px;
+        }
+            
+        .courses-scroll-container::-webkit-scrollbar-thumb {
+            background: #FF7AAB;
+            border-radius: 4px;
+        }
+        
+        .courses-scroll {
+            display: inline-flex;
+            gap: 20px;
+            padding: 10px;
+            min-width: min-content;
+        }
+        
+        .course-image {
+            width: 100%;
+            height: 250px;
+            border-radius: 8px 8px 0 0; 
+            display: block;
+        }
+
+        .course-card {
+            overflow: hidden;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+            width: 400px;
+            background: white;
+            border-radius: 10px;
+            padding: 20px;
+            flex-shrink: 0;
+        }
+        
+        .course-card h3 {
+            padding: 0%;
+            font-size: 1.5rem;
+            color: #FF62A7;
+            margin-bottom: 10px;
+        }
+        
+        .course-card p {
+            font-family: sans-serif;
+            padding: 0%;
+            color: #555;
+            line-height: 1.5;
+            margin-bottom: 15px;
+        }
+        
+        .button {
+            background: #FF62A7;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            width: 100%;
         }
 
 
