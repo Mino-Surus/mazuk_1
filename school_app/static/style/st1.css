@@ -29,6 +29,7 @@
         }
         
         .avatar {
+            background-image: url('../media/avatar.png');
             width: 120px;
             height: 120px;
             border-radius: 50%;
@@ -121,7 +122,7 @@
             border-bottom: none;
         }
 
-        .h2 {
+        h2 {
             font-size: 2rem;
             font-family: Anton;
         }

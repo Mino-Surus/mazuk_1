@@ -13,17 +13,17 @@
     <link rel="stylesheet" href="../static/style/st1.css">
 </head>
 <body>
-        <div class="dashboard-container">
+    <div class="dashboard-container">
         <div class="sidebar">
             <div class="avatar"></div>
             <div class="user-info">
-                <div class="user-name">Mila Surus</div>
-                <div class="user-email">milasuhobrus@yandex.ru</div>
+                <div class="user-name">{{ student.name }}</div>
+                <div class="user-email">{{ student.email }}</div>
             </div>
-            
+        
             <div class="level-card">
                 <div class="level-title">YOUR LEVEL</div>
-                <h2 >BEGINNER</h2>
+                <div class="level-badge">{{ student.level }}</div>
                 <button class="view-btn">VIEW</button>
             </div>
         </div>
@@ -38,5 +38,6 @@
                 <li class="menu-item">Share with Friends</li>
             </ul>
         </div>
+    </div>
 </body>
 </html>
