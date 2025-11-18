@@ -1,20 +1,6 @@
-<!DOCTYPE html>
-<html lang="ru">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Школа онлайн изучения корейского языка</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Anton&family=Paytone+One&display=swap" rel="stylesheet">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Anton&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="../static/style/style.css">
-    
-
-</head>
-<body>
+{% extends "all.html"%}
+{% block "korean"%}Школа{%endblock%}
+{% block "content"%}
 
     <header class="header">
         <div class="logo">LUVKOREA.</div>
@@ -122,6 +108,4 @@
     <div id="contact" class="contact"> luvkorea@mail.ru</div>
     </div>
 </footer>
-
-</body>
-</html>
+{% endblock %}
