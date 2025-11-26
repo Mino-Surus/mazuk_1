@@ -143,6 +143,20 @@
             margin-left: 20px;
         }
 
+        .reset-button{
+            font-size: 15px;
+            font-family: sans-serif;
+            text-decoration: none;
+            background: #ffffff;
+            color: #FF5794;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 100px;
+            cursor: pointer;
+            font-weight: 500;
+            margin-left: 20px;
+        }
+
 
         h1 {
             padding-bottom: 2vw;
@@ -177,6 +191,13 @@
             line-height: 120px;
         }
 
+        .course-card h3 {
+        line-height: 1.1;          
+        font-size: 18px;          
+        font-weight: bold;
+        min-height: 2.2em;        
+        }
+
         p {
             font-size: 20px;
             padding-left: 10vw;
@@ -191,7 +212,20 @@
         margin: 0;
         width: 100%;
         }
-    
+        
+        .filter-select {
+        background-color: #ffffff;
+        padding: 10px 15px;
+        border: 1px solid #ffffff;
+        border-radius: 20px;
+        font-size: 14px;
+        font-family: sans-serif;
+        color: #FF5794;
+        min-width: 180px;
+        margin: 0 0 30px 20px;
+        }
+
+
         .section-title {
             padding: 0%;
             text-align: center;
@@ -228,6 +262,7 @@
             height: 250px;
             border-radius: 8px 8px 0 0; 
             display: block;
+            margin-bottom: 30px;
         }
 
         .course-card {

@@ -19,7 +19,6 @@
         <h1>
         <div> KOREAN </div>
         <div>LANGUAGE</div>
-        
         </h1>
         <p>
             Start learning Korean right now! Quick and easy
@@ -27,85 +26,90 @@
             with LuvKorea!
         </p>
     </div>
+    
     <div class="forwho">
-    <div class="container">
-        <div class="section-header">
-            <h1 class="main-title">
-                <span class="word-1"> THE TRAINING IS </span> 
-                <span class="word-2"> SUITABLE </span> 
-            </h1>
+        <div class="container">
+            <div class="section-header">
+                <h1 class="main-title">
+                    <span class="word-1"> THE TRAINING IS </span> 
+                    <span class="word-2"> SUITABLE </span> 
+                </h1>
+            </div>
+            
+            <div id="forwho" class="cards-container">
+                <div class="card">
+                    <h2 class="card-title">LOW SKILL</h2>
+                    <p class="card-text">If you want to learn Korean from scratch, our training program will help you master it quickly.</p>
+                </div>
+                
+                <div class="card">
+                    <h2 class="card-title">MEDIUM SKILL</h2>
+                    <p class="card-text">if you have previously studied a language, but you want to improve your level, then the course will help you with this task.</p>
+                </div>
+                
+                <div class="card">
+                    <h2 class="card-title">SPECIAL</h2>
+                    <p class="card-text">If you need to take a Korean language proficiency test (TOPIK) for work or study, our course will help prepare you for it.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <section id="course" class="courses-section">
+        <h2 class="section-title">LUVKOREA</h2>
+        
+        <div class="courses-controls">
+            <form method="get" class="filter-form">
+                <div class="search-box">
+                    <input type="text" name="search" value="{{ search_query }}" 
+                           placeholder="Поиск курсов..." class="search-input">
+                    <button type="submit" class="search-button">🔍</button>
+                </div>
+                
+                <select name="level" class="filter-select">
+                    <option value="">Все уровни</option>
+                    <option value="lite" {% if level_filter == 'lite' %}selected{% endif %}>Lite</option>
+                    <option value="medium" {% if level_filter == 'medium' %}selected{% endif %}>Medium</option>
+                    <option value="hard" {% if level_filter == 'hard' %}selected{% endif %}>Hard</option>
+                </select>
+     
+                <button type="submit" class="button">Применить</button>
+                <a href="?" class="reset-button">Сбросить</a>
+            </form>
         </div>
         
-        <div id="forwho" class="cards-container">
-            <div class="card">
-                <h2 class="card-title">LOW SKILL</h2>
-                <p class="card-text">If you want to learn Korean from scratch, our training program will help you master it quickly.</p>
-            </div>
-            
-            <div class="card">
-                <h2 class="card-title">MEDIUM SKILL</h2>
-                <p class="card-text">if you have previously studied a language, but you want to improve your level, then the course will help you with this task.</p>
-            </div>
-            
-            <div class="card">
-                <h2 class="card-title">SPECIAL</h2>
-                <p class="card-text">If you need to take a Korean language proficiency test (TOPIK) for work or study, our course will help prepare you for it.</p>
-            </div>
-        </div>
-    </div>
-    </div>
-    <section id="course" class="courses-section">
-    <h2 class="section-title">LUVKOREA</h2>
-    
-    <div class="courses-scroll-container">
-        <div class="courses-scroll">
-            <div class="course-card">
-                <img src="../static/media/course_1.jpg" alt="Корейский язык" class="course-image" >
-                <h3>COURSE 1</h3>
-                <p>This course will help you familiarize yourself with the basic level of language proficiency and master the basics of all the subtleties of Korea.</p>
-                <button class="button">View</button>
-            </div>
-            <div class="course-card">
-                <img src="../static/media/course_2.webp" alt="Корейский язык" class="course-image" >
-                <h3>COURSE 2</h3>
-                <p>This course will help you familiarize yourself with the basic level of language proficiency and master the basics of all the subtleties of Korea.</p>
-                <button class="button">View</button>
-            </div>
-            <div class="course-card">
-                <img src="../static/media/course_3.jpg" alt="Корейский язык" class="course-image" >
-                <h3>COURSE 3</h3>
-                <p>This course will help you familiarize yourself with the basic level of language proficiency and master the basics of all the subtleties of Korea.</p>
-                <button class="button">View</button>
-            </div>
-            <div class="course-card">
-                <img src="../static/media/course_4.webp" alt="Корейский язык" class="course-image" >
-                <h3>COURSE 4</h3>
-                <p>This course will help you familiarize yourself with the basic level of language proficiency and master the basics of all the subtleties of Korea.</p>
-                <button class="button">View</button>
-            </div>
-            <div class="course-card">
-                <img src="../static/media/course_5.jpg" alt="Корейский язык" class="course-image" >
-                <h3>COURSE 5</h3>
-                <p>This course will help you familiarize yourself with the basic level of language proficiency and master the basics of all the subtleties of Korea.</p>
-                <button class="button">View</button>
+        <div class="courses-scroll-container">
+            <div class="courses-scroll">
+                {% for course in courses %}
+                <div class="course-card">
+                    <img src="../static/media/course_{{ course.id }}.jpg" alt="Корейский язык" class="course-image">
+                    <h3>{{ course.name }}</h3>
+                    <p>{{ course.description }}</p>
+                    <p class="course-level"><b> Уровень: {{ course.level }} </b></p>
+                    <button class="button">View</button>
+                </div>
+                {% empty %}
+                <div class="course-card">
+                    <p>{% if search_query or level_filter %}Курсы не найдены{% else %}Курсы пока не добавлены{% endif %}</p>
+                </div>
+                {% endfor %}
             </div>
         </div>
-    </div>
-    </div>
-</section>
+    </section>  
 
-<div id="contact" class="footer">
-    <div class="logo">LUVKOREA</div>
-    
-    <div class="links">
-        <a href="#main">Main</a>
-        <a href="#lesson">Lesson</a>
-        <a href="#forwho">For who</a>
-        <a href="#course">Courses</a>
-        <a href="#login">Log in</a>
-        <a href="#about">About course</a>
-    </div>
-    <div id="contact" class="contact"> luvkorea@mail.ru</div>
-    </div>
-</footer>
+    <footer>  
+        <div id="contact" class="footer">
+            <div class="logo">LUVKOREA</div>
+            
+            <div class="links">
+                <a href="#main">Main</a>
+                <a href="#lesson">Lesson</a>
+                <a href="#forwho">For who</a>
+                <a href="#course">Courses</a>
+                <a href="#login">Log in</a>
+                <a href="#about">About course</a>
+            </div>
+            <div class="contact">luvkorea@mail.ru</div>
+        </div>
+    </footer> 
 {% endblock %}
