@@ -39,13 +39,6 @@
             margin-bottom: 10px;
         }
         
-        .word-1 { color: #ffffff; }
-        .word-2 { color: #FF5794; }
-        
-        .subtitle {
-            font-size: 1.2rem;
-            color: #666;
-        }
         .cards-container {
             display: flex;
             gap: 20px;
@@ -328,4 +321,20 @@
             font-size: 0.8rem;
         }
 
- 
+        .search-button{
+            border: none;
+            background-color: none;
+            height: 50px;
+            width: 50px;
+            background: url('../media/search.png');
+            background-repeat: no-repeat;
+        }
+
+        .courses-controls{
+            display: flex;
+        }
+
+        .search-box .search {
+            background-color: #ffffff;
+            border-radius: 20PX;
+        }
