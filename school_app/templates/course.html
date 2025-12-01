@@ -1,0 +1,49 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Школа корейского языка личный кабинет</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Anton&family=Paytone+One&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Anton&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="{% static 'style/st2.css' %}">
+</head>
+<body>
+    <div class="course-info-card">
+        <div class="course-image-side"></div>
+            
+        <div class="course-description">
+            <div class="course-header">
+                <span class="word-1">ABOUT</span> 
+                <span class="word-2">COURSE</span> 
+                <p>Our courses cater to all proficiency levels, supported by passionate instructors who create a welcoming environment.</p>
+            </div>
+
+            <h2>{{ course.name }}</h2>
+            <p>{{ course.description }}</p>
+            
+            <div class="information">
+                <div class="info">
+                    <h3>{{ course.level }}</h3>
+                    <p>Course Level</p>
+                </div>
+                <div class="info">
+                    <h3>{{ course.teacher_id.name }}</h3>
+                    <p>Your Teacher</p>
+                </div>
+                <div class="info">
+                    <h3>{{ course.enrollment_date|date:"F d, Y" }}</h3>
+                    <p>Date</p>
+                </div>
+            </div>
+            
+            <button class="start-button">Start Now</button>
+        </div>
+    </div>
+</body>
+</html>

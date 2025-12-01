@@ -86,8 +86,7 @@
                     <h3>{{ course.name }}</h3>
                     <p>{{ course.description }}</p>
                     <p class="course-level"><b> Уровень: {{ course.level }} </b></p>
-                    <button class="button">View</button>
-                </div>
+                    <button class="button" onclick="location.href='{% url 'course' course.id %}'">View</button>                </div>
                 {% empty %}
                 <div class="course-card">
                     <p>{% if search_query or level_filter %}Курсы не найдены{% else %}Курсы пока не добавлены{% endif %}</p>
