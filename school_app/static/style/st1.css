@@ -54,7 +54,7 @@
         .menu-list {
             list-style: none;
         }
-        
+
         .menu-item {
             font-family: sans-serif;
             padding: 15px 40px 15px 50px;
@@ -63,6 +63,12 @@
             cursor: pointer;
             transition: color 0.3s;
             position: relative;
+        }
+
+        .menu-item a {
+            text-decoration: none;
+            color: inherit;
+            display: block;
         }
 
         .menu-item::before {
