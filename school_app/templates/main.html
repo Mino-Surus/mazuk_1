@@ -55,7 +55,7 @@
         </div>
     </div>
     
-    <section id="course" class="courses-section">
+       <section id="course" class="courses-section">
         <h2 class="section-title">LUVKOREA</h2>
         
         <div class="courses-controls">
@@ -63,7 +63,7 @@
                 <div class="search-box">
                     <input type="text" name="search" value="{{ search_query }}" 
                            placeholder="Поиск курсов..." class="search-input">
-                    <button type="submit" class="search-button" ></button>
+                    <button type="submit" class="search-button"></button>
                 </div>
                 
                 <select name="level" class="filter-select">
@@ -72,9 +72,8 @@
                     <option value="medium" {% if level_filter == 'medium' %}selected{% endif %}>Medium</option>
                     <option value="hard" {% if level_filter == 'hard' %}selected{% endif %}>Hard</option>
                 </select>
-     
-                <button type="submit" class="button">Применить</button>
-                <a href="? #course" class="reset-button">Сбросить</a>
+    
+                <a href="?" class="reset-button">Сбросить</a>
             </form>
         </div>
         
@@ -86,14 +85,16 @@
                     <h3>{{ course.name }}</h3>
                     <p>{{ course.description }}</p>
                     <p class="course-level"><b> Уровень: {{ course.level }} </b></p>
-                    <button class="button" onclick="location.href='{% url 'course' course.id %}'">View</button>                </div>
+                    <button class="button" onclick="location.href='{% url 'course' course.id %}'">View</button>
+                </div>
                 {% empty %}
                 <div class="course-card">
-                    <p>{% if search_query or level_filter %}Курсы не найдены{% else %}Курсы пока не добавлены{% endif %}</p>
+                    <p>Курсы пока не добавлены</p>
                 </div>
                 {% endfor %}
             </div>
         </div>
+    </section> 
     </section>  
 
     <footer>  
@@ -111,4 +112,7 @@
             <div class="contact">luvkorea@mail.ru</div>
         </div>
     </footer> 
+    
+
+    <script src="../static/script/main.js"></script>
 {% endblock %}
