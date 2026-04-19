@@ -334,7 +334,151 @@
             margin: 0%;
             font-size: 0.8rem;
         }
-        
+        .lang-btn {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            padding: 10px 20px;
+            background: #FF7AAB;
+            color: white;
+            border: none;
+            border-radius: 25px;
+            cursor: pointer;
+            z-index: 9999;
+            font-size: 16px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2); 
+            transition: all 0.3s ease;      
+        }
+
+        .lang-btn:hover {
+            background: #481F6B;
+        }
+
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(72, 31, 107, 0.9); 
+            z-index: 10000;
+            justify-content: center;
+            align-items: center;
+            font-family: sans-serif;
+        }
+
+        .modal-content {
+            background: white;
+            padding: 40px;
+            border-radius: 20px;
+            width: 400px;
+            max-width: 90%;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+            text-align: center;
+            animation: modalFadeIn 0.3s ease;
+        }
+
+        @keyframes modalFadeIn {
+            from {
+                opacity: 0;
+                transform: scale(0.9);
+            }
+            to {
+                opacity: 1;
+                transform: scale(1);
+            }
+        }
+
+        .modal-content h2 {
+            font-family: 'Paytone One', sans-serif;
+            font-size: 28px;
+            color: #481F6B;
+            margin-bottom: 25px;
+            padding: 0;
+            text-align: center;
+            line-height: normal;
+        }
+
+        .modal-content input {
+            width: 100%;
+            padding: 12px 15px;
+            margin: 10px 0;
+            border: 2px solid #FF7AAB;
+            border-radius: 50px;
+            font-size: 14px;
+            font-family: sans-serif;
+            outline: none;
+            transition: all 0.3s ease;
+            box-sizing: border-box;
+        }
+
+        .modal-content input:focus {
+            border-color: #481F6B;
+            box-shadow: 0 0 5px rgba(72, 31, 107, 0.3);
+        }
+
+        .modal-content input::placeholder {
+            color: #999;
+        }
+
+        .modal-content button {
+            width: 100%;
+            padding: 12px;
+            background: #FF62A7;
+            color: white;
+            border: none;
+            border-radius: 50px;
+            cursor: pointer;
+            font-size: 16px;
+            font-family: 'Paytone One', sans-serif;
+            margin-top: 15px;
+            transition: all 0.3s ease;
+        }
+
+        .modal-content button:hover {
+            background: #481F6B;
+            transform: translateY(-2px);
+        }
+
+        .close-btn {
+            float: right;
+            font-size: 28px;
+            font-weight: bold;
+            cursor: pointer;
+            color: #FF7AAB;
+            transition: all 0.3s ease;
+            line-height: 1;
+            margin-top: -20px;
+            margin-right: -20px;
+        }
+
+        .close-btn:hover {
+            color: #481F6B;
+            transform: scale(1.1);
+        }
+
+        .error-message {
+            color: #FF4757;
+            font-size: 12px;
+            margin-top: 5px;
+            display: none;
+            text-align: left;
+            padding-left: 15px;
+        }
+
+        .modal-content h2,
+        .modal-content p,
+        .modal-content input,
+        .modal-content button {
+            padding-left: 0;
+            padding-right: 0;
+        }
+
+        .modal-content input {
+            padding-left: 15px;
+            padding-right: 15px;
+        }
         h1 {
             padding-bottom: 2vw;
             padding-left: 13vw;
@@ -373,3 +517,4 @@
             padding-left: 10vw;
             color: #ffffff;
         }
+        
