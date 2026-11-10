@@ -11,8 +11,7 @@ class TeacherSerializer(serializers.ModelSerializer):
         fields = '__all__'
 
 class CourseSerializer(serializers.ModelSerializer):
-    teacher_name = serializers.ReadOnlyField(source='teacher_id.name') 
-    
+    teacher_name = serializers.ReadOnlyField(source='teacher_id.name')     
     class Meta:
         model = course
         fields = '__all__'
