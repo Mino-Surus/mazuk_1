@@ -1,7 +1,10 @@
 from rest_framework.decorators import api_view
 from rest_framework.response import Response
 from rest_framework import status
+from django.http import JsonResponse
+from django.contrib.auth import authenticate, login
 from django.shortcuts import get_object_or_404
+from django.views.decorators.csrf import ensure_csrf_cookie
 from .models import *
 from .serializers import *
 
@@ -35,3 +38,23 @@ def course_about(request, course_id):
     course_obj = get_object_or_404(course, id=course_id)
     serializer = CourseSerializer(course_obj)
     return Response(serializer.data)
+
+def login_view(request):
+    if request.method == 'POST':
+        import json
+        data = json.loads(request.body)
+        username = data.get('username')
+        password = data.get('password')
+        
+        user = authenticate(request, username=username, password=password)
+        
+        if user is not None:
+            login(request, user)
+            return JsonResponse({"success": True, "username": user.username})
+        else:
+            return JsonResponse({"success": False, "error": "Неверный логин или пароль"}, status=400)
+    return JsonResponse({"error": "Только POST запросы"}, status=405)
+
+@ensure_csrf_cookie
+def get_csrf_token(request):
+    return JsonResponse({"detail": "CSRF cookie set"})

@@ -9,8 +9,7 @@
           <li><a href="#course">Курсы</a></li>
           <li><a href="#contact">Контакты</a></li>
         </ul>
-        <a href="#" class="button">Sign in</a>
-      </nav>
+      <router-link to="/login" class="button">Sign in</router-link>      </nav>
     </header>
 
     <div id="main" class="content">

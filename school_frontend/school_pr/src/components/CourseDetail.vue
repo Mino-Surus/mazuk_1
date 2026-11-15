@@ -1,9 +1,7 @@
 <template>
   <div class="course-page" v-if="course">
     <div class="course-info-card">
-      <div class="course-image-side">
-        <img :src="`/media/course_${course.id}.jpg`" alt="Course Image" class="main-image">
-      </div>
+      <div class="course-image-side"></div>
             
       <div class="course-description">
         <div class="course-header">
@@ -30,7 +28,7 @@
           </div>
         </div>
         
-        <router-link to="/" class="start-button" style="text-decoration: none; display: inline-block; text-align: center;">Start Now</router-link>
+        <router-link to="/" class="start-button">Start Now</router-link>
       </div>
     </div>
   </div>
@@ -65,40 +63,28 @@ onMounted(async () => {
 @import url('https://fonts.googleapis.com/css2?family=Anton&family=Paytone+One&family=Oswald:wght@200..700&display=swap');
 
 .course-page {
-  background-color: #f5f5f5;
   min-height: 100vh;
+  width: 100%;
   display: flex;
-  justify-content: center;
-  align-items: center;
-  font-family: sans-serif;
-  padding: 20px;
   box-sizing: border-box;
+  background-color: #ffffff;
 }
 
 .course-info-card {
   display: flex;
-  background: white;
-  border-radius: 20px;
-  overflow: hidden;
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
-  max-width: 1000px;
   width: 100%;
-  min-height: 600px;
+  min-height: 100vh;
 }
 
 .course-image-side {
   flex: 1;
-  background-color: #481F6B;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  overflow: hidden;
-}
-
-.main-image {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
+  background-image: url('/media/about.png');
+  /* contain - вписывает картинку целиком, не обрезая */
+  background-size: contain;
+  background-position: center;
+  background-repeat: no-repeat;
+  /* Добавил белый фон, чтобы если картинка не заполняет блок, не было пустоты */
+  background-color: #ffffff; 
 }
 
 .course-description {
@@ -107,21 +93,22 @@ onMounted(async () => {
   display: flex;
   flex-direction: column;
   justify-content: center;
+  background-color: #ffffff;
 }
 
 .course-header {
-  margin-bottom: 30px;
+  margin-bottom: 20px;
 }
 
 .word-1 {
   font-family: Anton, sans-serif;
-  font-size: 2rem;
+  font-size: 1.5rem;
   color: #FF5794;
 }
 
 .word-2 {
   font-family: Anton, sans-serif;
-  font-size: 2rem;
+  font-size: 1.5rem;
   color: #481F6B;
 }
 
@@ -130,6 +117,7 @@ onMounted(async () => {
   font-size: 14px;
   margin-top: 10px;
   line-height: 1.5;
+  padding: 0;
 }
 
 h2 {
@@ -138,18 +126,21 @@ h2 {
   color: #481F6B;
   margin-bottom: 20px;
   line-height: 1.2;
+  padding: 0;
 }
 
 .desc-text {
   color: #555;
   line-height: 1.6;
-  margin-bottom: 40px;
+  margin-bottom: 30px;
+  padding: 0;
+  font-size: 16px;
 }
 
 .information {
   display: flex;
-  gap: 30px;
-  margin-bottom: 40px;
+  gap: 20px;
+  margin-bottom: 30px;
 }
 
 .info h3 {
@@ -157,6 +148,8 @@ h2 {
   font-size: 1.2rem;
   color: #481F6B;
   margin-bottom: 5px;
+  padding: 0;
+  line-height: 1.2;
 }
 
 .info p {
@@ -164,6 +157,8 @@ h2 {
   color: #999;
   text-transform: uppercase;
   letter-spacing: 1px;
+  padding: 0;
+  margin: 0;
 }
 
 .start-button {
@@ -177,6 +172,9 @@ h2 {
   cursor: pointer;
   transition: all 0.3s ease;
   align-self: flex-start;
+  text-decoration: none;
+  display: inline-block;
+  text-align: center;
 }
 
 .start-button:hover {
