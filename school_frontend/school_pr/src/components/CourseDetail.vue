@@ -28,9 +28,30 @@
           </div>
         </div>
         
-        <router-link to="/" class="start-button">Start Now</router-link>
+        <button @click="enrollCourse" class="start-button">Start Now</button>
       </div>
     </div>
+
+    <div class="lessons-section">
+      <h2>Уроки курса</h2>
+      <div v-if="lessons.length > 0" class="lessons-list">
+        <div v-for="lesson in lessons" :key="lesson.id" class="lesson-item">
+          <h3>{{ lesson.title }}</h3>
+          <p>{{ lesson.content }}</p>
+          <small>Дата: {{ lesson.date }}</small>
+        </div>
+      </div>
+      <p v-else>Уроков пока нет.</p>
+    </div>
+
+    <div v-if="showModal" class="modal-overlay">
+      <div class="modal-content">
+        <h2>Успех!</h2>
+        <p>Вы записаны на курс!</p>
+        <button @click="showModal = false" class="close-modal-btn">ОК</button>
+      </div>
+    </div>
+
   </div>
   <div v-else class="loading">Загрузка...</div>
 </template>
@@ -42,6 +63,8 @@ import axios from 'axios'
 
 const route = useRoute()
 const course = ref(null)
+const lessons = ref([])
+const showModal = ref(false)
 
 const formatDate = (dateString) => {
   if (!dateString) return '';
@@ -49,23 +72,45 @@ const formatDate = (dateString) => {
   return date.toLocaleDateString('en-US', { month: 'long', day: 'numeric', year: 'numeric' });
 }
 
+const enrollCourse = async () => {
+  try {
+    const csrfToken = document.cookie
+      .split('; ')
+      .find(row => row.startsWith('csrftoken='))
+      ?.split('=')[1];
+
+    const res = await axios.post(`/api/enroll/${route.params.id}/`, {}, {
+      headers: { 'X-CSRFToken': csrfToken }
+    })
+    
+    if (res.data.success) {
+      showModal.value = true
+    }
+  } catch (error) {
+    console.error("Ошибка записи:", error)
+    alert("Ошибка при записи на курс")
+  }
+}
+
 onMounted(async () => {
   try {
-    const response = await axios.get(`http://127.0.0.1:8000/api/course/${route.params.id}/`)
-    course.value = response.data
+    const res = await axios.get(`/api/course/${route.params.id}/`)
+    course.value = res.data
+    
+    const lessonsRes = await axios.get(`/api/course/${route.params.id}/lessons/`)
+    lessons.value = lessonsRes.data
   } catch (error) {
-    console.error('Ошибка при загрузке курса:', error)
+    console.error('Ошибка при загрузке:', error)
   }
 })
 </script>
 
 <style scoped>
-@import url('https://fonts.googleapis.com/css2?family=Anton&family=Paytone+One&family=Oswald:wght@200..700&display=swap');
-
 .course-page {
   min-height: 100vh;
   width: 100%;
   display: flex;
+  flex-direction: column;
   box-sizing: border-box;
   background-color: #ffffff;
 }
@@ -79,11 +124,9 @@ onMounted(async () => {
 .course-image-side {
   flex: 1;
   background-image: url('/media/about.png');
-  /* contain - вписывает картинку целиком, не обрезая */
   background-size: contain;
   background-position: center;
   background-repeat: no-repeat;
-  /* Добавил белый фон, чтобы если картинка не заполняет блок, не было пустоты */
   background-color: #ffffff; 
 }
 
@@ -180,6 +223,92 @@ h2 {
 .start-button:hover {
   background: #481F6B;
   transform: translateY(-2px);
+}
+
+.lessons-section {
+  max-width: 1000px;
+  margin: 40px auto;
+  padding: 0 20px;
+  font-family: sans-serif;
+  width: 100%;
+}
+
+.lessons-section h2 {
+  color: #481F6B;
+  font-family: 'Paytone One', sans-serif;
+  margin-bottom: 20px;
+}
+
+.lesson-item {
+  background: white;
+  padding: 20px;
+  border-radius: 10px;
+  margin-bottom: 15px;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+  border: 1px solid #f0f0f0;
+}
+
+.lesson-item h3 {
+  color: #FF62A7;
+  margin-bottom: 10px;
+  font-family: 'Paytone One', sans-serif;
+}
+
+.lesson-item p {
+  color: #555;
+  margin-bottom: 10px;
+  line-height: 1.5;
+  padding: 0;
+}
+
+.lesson-item small {
+  color: #999;
+}
+
+.modal-overlay {
+  position: fixed;
+  top: 0; left: 0; width: 100%; height: 100%;
+  background: rgba(0,0,0,0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
+
+.modal-content {
+  background: white;
+  padding: 40px;
+  border-radius: 20px;
+  text-align: center;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+}
+
+.modal-content h2 {
+  color: #481F6B;
+  font-family: 'Paytone One', sans-serif;
+  margin-bottom: 10px;
+}
+
+.modal-content p {
+  margin-bottom: 20px;
+  font-size: 1.1rem;
+  color: #333;
+}
+
+.close-modal-btn {
+  background: #FF62A7;
+  color: white;
+  border: none;
+  padding: 10px 30px;
+  border-radius: 20px;
+  cursor: pointer;
+  font-family: 'Paytone One', sans-serif;
+  font-size: 1rem;
+  transition: 0.3s;
+}
+
+.close-modal-btn:hover {
+  background: #481F6B;
 }
 
 .loading {

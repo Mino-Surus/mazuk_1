@@ -3,6 +3,7 @@ from rest_framework.response import Response
 from rest_framework import status
 from django.http import JsonResponse
 from django.contrib.auth import authenticate, login
+from django.contrib.auth.models import User
 from django.shortcuts import get_object_or_404
 from django.views.decorators.csrf import ensure_csrf_cookie
 from .models import *
@@ -34,7 +35,6 @@ def students(request):
 
 @api_view(['GET'])
 def course_about(request, course_id):
-    """Возвращает детали одного курса"""
     course_obj = get_object_or_404(course, id=course_id)
     serializer = CourseSerializer(course_obj)
     return Response(serializer.data)
@@ -58,3 +58,36 @@ def login_view(request):
 @ensure_csrf_cookie
 def get_csrf_token(request):
     return JsonResponse({"detail": "CSRF cookie set"})
+
+@api_view(['POST'])
+def enroll_course(request, course_id):
+    student_obj = student.objects.first()
+    if not student_obj:
+        student_obj = student.objects.create(
+            name="Test", surname="User", patronymic="", 
+            phone="", email="test@test.ru", 
+            registration_date="2026-01-01", document="", level="lite"
+        )
+        
+    course_obj = get_object_or_404(course, id=course_id)
+    
+    if enrollments.objects.filter(course_id=course_obj, student_id=student_obj).exists():
+        return Response({"message": "Вы уже записаны на этот курс", "success": False})
+        
+    enrollments.objects.create(course_id=course_obj, student_id=student_obj, enrollment_date='2026-11-15')
+    return Response({"success": True, "message": "Вы записаны на курс!"})
+
+@api_view(['GET'])
+def my_courses(request):
+    student_obj = student.objects.first()
+    if not student_obj:
+        return Response([])
+    enrolls = enrollments.objects.filter(student_id=student_obj)
+    serializer = EnrollmentSerializer(enrolls, many=True)
+    return Response(serializer.data)
+
+@api_view(['GET'])
+def course_lessons(request, course_id):
+    lessons_list = lessons.objects.filter(course_id=course_id)
+    serializer = LessonSerializer(lessons_list, many=True)
+    return Response(serializer.data)

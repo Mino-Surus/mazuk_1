@@ -7,7 +7,9 @@
         <div class="user-email">student@luvkorea.ru</div>
       </div>
       <ul class="menu-list">
-        <li class="menu-item"><a href="/#course">My courses</a></li>
+        <li class="menu-item">
+          <router-link to="/my-courses">My courses</router-link>
+        </li>
         <li class="menu-item">Help & Support</li>
         <li class="menu-item">Account Settings</li>
         <li class="menu-item">Personal information</li>
@@ -101,6 +103,13 @@ const logout = () => {
 .menu-item a {
   text-decoration: none;
   color: inherit;
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+
+.menu-item:hover {
+  color: #FF62A7;
 }
 
 .sidebar {
